@@ -1,10 +1,12 @@
 ﻿using MembershipManager.Models;
 using MembershipManager.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MembershipManager.Controllers
 {
    
+        [Authorize]
         [ApiController]
         [Route("api/v1/[controller]")]
         public class RegionsController : ControllerBase
