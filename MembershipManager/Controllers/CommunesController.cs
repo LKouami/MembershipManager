@@ -1,10 +1,11 @@
 ﻿using MembershipManager.Models;
 using MembershipManager.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MembershipManager.Controllers
 {
-   
+        [Authorize]
         [ApiController]
         [Route("api/v1/[controller]")]
         public class CommunesController : ControllerBase
@@ -14,6 +15,7 @@ namespace MembershipManager.Controllers
             public CommunesController(CommunesService communesService) =>
                 _communesService = communesService;
 
+        
             [HttpGet]
             public async Task<List<Commune>> Get() =>
                 await _communesService.GetAsync();

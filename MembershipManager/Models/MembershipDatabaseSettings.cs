@@ -6,6 +6,7 @@
 
         public string DatabaseName { get; set; } = null!;
 
+        public string UsersCollectionName { get; set; } = null!;
         public string MembersCollectionName { get; set; } = null!;
 
         public string CommunesCollectionName { get; set; } = null!;
