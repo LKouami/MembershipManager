@@ -1,13 +1,19 @@
+using AspNetCore.Identity.MongoDbCore.Infrastructure;
 using MembershipManager.Models;
 using MembershipManager.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using AspNetCore.Identity.MongoDbCore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var mongoDbSettings = builder.Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
 // Add services to the container.
-
+builder.Services.AddIdentity<User, Role>()
+    .AddMongoDbStores<User, Role, Guid>
+    (
+        mongoDbSettings.ConnectionString, mongoDbSettings.DatabaseName
+    );
 builder.Services.AddControllers()
     .AddJsonOptions(
         options => options.JsonSerializerOptions.PropertyNamingPolicy = null); 

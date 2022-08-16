@@ -1,9 +1,12 @@
-﻿using MongoDB.Bson;
+﻿using AspNetCore.Identity.MongoDbCore.Models;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDbGenericRepository.Attributes;
 
 namespace MembershipManager.Models
 {
-    public class User
+    [CollectionName("Users")]
+    public class User : MongoIdentityUser<Guid>
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
