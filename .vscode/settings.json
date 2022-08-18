@@ -1,4 +1,5 @@
 {
     "appService.preDeployTask": "publish-release",
-    "appService.deploySubpath": "MembershipManager/bin/Release/net6.0/publish"
+    "appService.deploySubpath": "MembershipManager\\bin\\Release\\net6.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/f6ab0c6a-de6e-4add-a24a-1620071422ad/microsoft.web/sites/subscriptions/f6ab0c6a-de6e-4add-a24a-1620071422ad/resourceGroups/MembershipManager/providers/Microsoft.Web/sites/MembershipManager"
 }

@@ -7,7 +7,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddControllers()
     .AddJsonOptions(
         options => options.JsonSerializerOptions.PropertyNamingPolicy = null); 
@@ -21,6 +21,16 @@ builder.Services.AddSingleton<CommunesService>();
 builder.Services.AddSingleton<PrefecturesService>();
 builder.Services.AddSingleton<RegionsService>();
 builder.Services.AddSingleton<UsersService>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();;
+                      });
+});
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -54,5 +64,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseCors(MyAllowSpecificOrigins);
 app.Run();
