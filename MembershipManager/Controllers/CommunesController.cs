@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MembershipManager.Controllers
 {
-        [Authorize]
+        // [Authorize]
         [ApiController]
         [Route("api/v1/[controller]")]
         public class CommunesController : ControllerBase
