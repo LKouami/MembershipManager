@@ -1,0 +1,7 @@
+{
+    "tenant": "789461234-4878512389644-4785121",
+    "name": "MAIRIE MAIN CHANNEL", 
+    "description": "Canal de communication",
+    "scope": "MAIRIE",
+    "tags": ["MAIRIE", "IT"]
+}

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace MembershipManager.Models
 {
-    public class Member
+    public class Member : Common
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

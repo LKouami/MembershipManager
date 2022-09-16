@@ -26,11 +26,18 @@ namespace MembershipManager.Services
         public async Task<Member?> GetAsync(string id) =>
             await _membersCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public async Task CreateAsync(Member newMember) =>
+        public async Task CreateAsync(Member newMember) {
+            newMember.CreatedDate = DateTime.Now;
+            newMember.ModifiedDate = DateTime.Now;
             await _membersCollection.InsertOneAsync(newMember);
+        }
+         
 
-        public async Task UpdateAsync(string id, Member updatedMember) =>
+        public async Task UpdateAsync(string id, Member updatedMember){
+            updatedMember.ModifiedDate = DateTime.Now;
+            updatedMember.CreatedDate = updatedMember.CreatedDate;
             await _membersCollection.ReplaceOneAsync(x => x.Id == id, updatedMember);
+        } 
 
         public async Task RemoveAsync(string id) =>
             await _membersCollection.DeleteOneAsync(x => x.Id == id);

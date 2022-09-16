@@ -26,11 +26,17 @@ namespace MembershipManager.Services
         public async Task<Region?> GetAsync(string id) =>
             await _regionsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public async Task CreateAsync(Region newRegion) =>
+        public async Task CreateAsync(Region newRegion) {
+            newRegion.CreatedDate = DateTime.Now;
+            newRegion.ModifiedDate = DateTime.Now;
             await _regionsCollection.InsertOneAsync(newRegion);
+        }
 
-        public async Task UpdateAsync(string id, Region updatedRegion) =>
+        public async Task UpdateAsync(string id, Region updatedRegion) {
+            updatedRegion.ModifiedDate = DateTime.Now;
+            // updatedRegion.CreatedDate = updatedRegion.CreatedDate;
             await _regionsCollection.ReplaceOneAsync(x => x.Id == id, updatedRegion);
+        }
 
         public async Task RemoveAsync(string id) =>
             await _regionsCollection.DeleteOneAsync(x => x.Id == id);
