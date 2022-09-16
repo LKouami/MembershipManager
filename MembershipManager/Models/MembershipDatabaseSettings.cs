@@ -1,6 +1,6 @@
 ﻿namespace MembershipManager.Models
 {
-    public class MembershipDatabaseSettings
+    public class MembershipDatabaseSettings: Common
     {
         public string ConnectionString { get; set; } = null!;
 

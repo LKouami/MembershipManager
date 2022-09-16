@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace MembershipManager.Models
 {
-    public class Region
+    public class Region : Common
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
